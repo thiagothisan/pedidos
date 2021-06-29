@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pedidos/views/clientes/clientes_view.dart';
 import 'package:pedidos/views/home/home_view.dart';
 
 void main() {
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => HomeView(),
+        '/clientes': (context) => ClientesView(),
       },
     );
   }
