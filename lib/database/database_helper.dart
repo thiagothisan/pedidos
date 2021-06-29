@@ -35,7 +35,8 @@ class DatabaseHelper {
 
     await db.execute("CREATE TABLE itens_pedido (" +
         "id_pedido INTEGER," +
-        "id_produto INTEGER)");
+        "id_produto INTEGER, " +
+        "quantidade_produto INTEGER)");
 
     await db.execute("CREATE TABLE pedidos (" +
         "id INTEGER PRIMARY KEY," +
