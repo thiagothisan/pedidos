@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pedidos/views/clientes/clientes_view.dart';
 import 'package:pedidos/views/home/home_view.dart';
 
+import 'views/produtos/produtos_view.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -19,6 +21,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => HomeView(),
         '/clientes': (context) => ClientesView(),
+        '/produtos': (context) => ProdutosView(),
       },
     );
   }
