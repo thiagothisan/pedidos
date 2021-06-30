@@ -75,4 +75,4 @@ flutter:
 scripts:
   build: flutter pub run build_runner build
   clean: flutter pub run build_runner clean
-  mobx: flutter pub run build_runner watch --delete-conflicting-output
+  mobx: flutter pub run build_runner watch --delete-conflicting-outputs

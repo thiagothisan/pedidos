@@ -27,4 +27,13 @@ class Produto {
       situacao: map['situacao'],
     );
   }
+  @override
+  String toString() {
+    return '''Produto => (           
+      id: $id,     
+      nome: $nome,
+      valor: $valor,       
+      situacao: $situacao     
+      )''';
+  }
 }

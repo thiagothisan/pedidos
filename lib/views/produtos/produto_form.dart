@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+
+import 'package:pedidos/controllers/produto_controller.dart';
 import 'package:pedidos/models/produto_model.dart';
 
 class ProdutoForm extends StatefulWidget {
-  const ProdutoForm({Key? key}) : super(key: key);
+  final ProdutoController controller;
+  const ProdutoForm({
+    Key? key,
+    required this.controller,
+  }) : super(key: key);
 
   @override
   _ProdutoFormState createState() => _ProdutoFormState();
@@ -71,7 +77,7 @@ class _ProdutoFormState extends State<ProdutoForm> {
           onPressed: () async {
             if (formKey.currentState!.validate()) {
               formKey.currentState!.save();
-
+              await widget.controller.save(_produto);
               Navigator.pop(context);
             }
           },
