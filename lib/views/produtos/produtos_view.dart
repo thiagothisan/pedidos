@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pedidos/views/produtos/produto_form.dart';
 
 class ProdutosView extends StatefulWidget {
   const ProdutosView({Key? key}) : super(key: key);
@@ -8,10 +9,6 @@ class ProdutosView extends StatefulWidget {
 }
 
 class _ProdutosViewState extends State<ProdutosView> {
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final TextEditingController nomeController = TextEditingController();
-  final TextEditingController valorController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +40,13 @@ class _ProdutosViewState extends State<ProdutosView> {
         }
       }),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return ProdutoForm();
+              });
+        },
         child: const Icon(
           Icons.add,
         ),
