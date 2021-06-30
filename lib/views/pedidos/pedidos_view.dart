@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pedidos/views/pedidos/pedido_form.dart';
 
 class PedidosView extends StatefulWidget {
   const PedidosView({Key? key}) : super(key: key);
@@ -127,7 +128,9 @@ class _PedidosViewState extends State<PedidosView> {
         }
       }),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, '/pedido');
+        },
         child: const Icon(
           Icons.add,
         ),

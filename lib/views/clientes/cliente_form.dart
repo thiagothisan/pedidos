@@ -17,7 +17,6 @@ class ClienteForm extends StatefulWidget {
 
 class _ClienteFormState extends State<ClienteForm> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final TextEditingController nomeController = TextEditingController();
   final TextEditingController telefoneController = TextEditingController();
   final TextEditingController dataNascimentoController =
       TextEditingController();
@@ -53,8 +52,10 @@ class _ClienteFormState extends State<ClienteForm> {
                   height: 10,
                 ),
                 TextFormField(
+                  controller: telefoneController,
                   textCapitalization: TextCapitalization.characters,
                   textInputAction: TextInputAction.next,
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Telefone',
@@ -66,6 +67,8 @@ class _ClienteFormState extends State<ClienteForm> {
                     return null;
                   },
                   onSaved: (telefone) => cliente.telefone = telefone.toString(),
+                  onEditingComplete: () =>
+                      getFormattedPhoneNumber(telefoneController.text),
                 ),
                 SizedBox(
                   height: 10,
@@ -129,5 +132,40 @@ class _ClienteFormState extends State<ClienteForm> {
     String formattedDate =
         formatter.format(DateTime.parse(selectedDate.toString()));
     return formattedDate;
+  }
+
+  String getFormattedPhoneNumber(String _phoneNumber) {
+    print("getFormattedPhoneNumber: $_phoneNumber");
+    if (_phoneNumber.isEmpty) {
+      return "";
+    }
+
+    String phoneNumber = _phoneNumber;
+
+    bool addParents = phoneNumber.length >= 2;
+    bool addDash = phoneNumber.length >= 10 || phoneNumber.length == 8;
+
+    String updatedNumber = "";
+
+    if (addParents) {
+      updatedNumber += "(";
+      updatedNumber += phoneNumber.substring(0, 2);
+      updatedNumber += ")";
+    } else {
+      updatedNumber += phoneNumber.substring(0);
+      return updatedNumber;
+    }
+
+    if (addDash) {
+      updatedNumber += phoneNumber.substring(2, 7);
+      updatedNumber += "-";
+    } else {
+      updatedNumber += phoneNumber.substring(2);
+      return updatedNumber;
+    }
+
+    updatedNumber += phoneNumber.substring(7);
+    telefoneController.text = updatedNumber;
+    return updatedNumber;
   }
 }

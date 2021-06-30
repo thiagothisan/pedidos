@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:pedidos/controllers/produto_controller.dart';
 import 'package:pedidos/models/produto_model.dart';
@@ -49,8 +50,10 @@ class _ProdutoFormState extends State<ProdutoForm> {
                   height: 10,
                 ),
                 TextFormField(
+                  controller: valorController,
                   textCapitalization: TextCapitalization.characters,
                   textInputAction: TextInputAction.next,
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Valor',
