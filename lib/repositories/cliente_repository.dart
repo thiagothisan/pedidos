@@ -11,7 +11,7 @@ class ClienteRepository implements IClienteRepository {
     try {
       Database db = await dbHelper.database;
       final List<Map<String, dynamic>> maps = await db.query("clientes",
-          where: "cliente.situacao = ?", whereArgs: ["ATIVO"]);
+          where: "clientes.situacao = ?", whereArgs: ["ATIVO"]);
       if (maps.length > 0) {
         List<Cliente> stuffList = maps.map((x) => Cliente.fromMap(x)).toList();
 
